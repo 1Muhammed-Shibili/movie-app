@@ -100,7 +100,7 @@ class HomeScreen extends StatelessWidget {
               _movieSection('Popular on Netflix',
                   controller.movies.skip(5).take(5).toList()),
               _movieSection('Continue Watching',
-                  controller.movies.skip(10).take(5).toList()),
+                  controller.movies.skip(3).take(5).toList()),
             ],
           ),
         );
@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _movieSection(String title, List movies) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.all(8.0),
