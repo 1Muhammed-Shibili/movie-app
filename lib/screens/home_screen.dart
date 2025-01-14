@@ -7,6 +7,8 @@ import 'package:movie_app/screens/search_screen.dart';
 class HomeScreen extends StatelessWidget {
   final MovieController controller = Get.put(MovieController());
 
+  HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +17,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'My Movies',
           style: TextStyle(
             color: Colors.white,
@@ -24,24 +26,25 @@ class HomeScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search, color: Colors.white),
+            icon: const Icon(Icons.search, color: Colors.white),
             onPressed: () => Get.to(() => SearchScreen()),
           ),
           IconButton(
-            icon: Icon(Icons.person_outline, color: Colors.white),
+            icon: const Icon(Icons.person_outline, color: Colors.white),
             onPressed: () {},
           ),
         ],
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
-          return Center(child: CircularProgressIndicator(color: Colors.red));
+          return const Center(
+              child: CircularProgressIndicator(color: Colors.red));
         }
         return SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 450,
                 child: Stack(
                   children: [
@@ -75,18 +78,18 @@ class HomeScreen extends StatelessWidget {
                             controller.movies.isNotEmpty
                                 ? controller.movies[0].name
                                 : '',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               _playButton(),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               _moreInfoButton(),
                             ],
                           ),
@@ -111,8 +114,8 @@ class HomeScreen extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          const BottomNavigationBarItem(
               icon: Icon(Icons.search), label: 'Search Movies'),
         ],
       ),
@@ -124,17 +127,17 @@ class HomeScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -142,7 +145,7 @@ class HomeScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               return Container(
                 width: 130,
-                margin: EdgeInsets.symmetric(horizontal: 4),
+                margin: const EdgeInsets.symmetric(horizontal: 4),
                 child: MovieCard(movie: movies[index]),
               );
             },
@@ -158,8 +161,8 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
-      icon: Icon(Icons.play_arrow),
-      label: Text('Play'),
+      icon: const Icon(Icons.play_arrow),
+      label: const Text('Play'),
       onPressed: () {},
     );
   }
@@ -170,8 +173,8 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.grey.withOpacity(0.5),
         foregroundColor: Colors.white,
       ),
-      icon: Icon(Icons.info_outline),
-      label: Text('More Info'),
+      icon: const Icon(Icons.info_outline),
+      label: const Text('More Info'),
       onPressed: () {},
     );
   }
